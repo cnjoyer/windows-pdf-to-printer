@@ -24,7 +24,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyPlugin([{ from: "./src/SumatraPDF.exe" }]),
+    new CopyPlugin([{ from: "./src/pdfapp.exe" }]),
   ],
   target: "node",
   node: {

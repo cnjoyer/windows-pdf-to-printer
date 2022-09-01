@@ -44,8 +44,7 @@ export default async function print(
   if (!pdf) throw "No PDF specified";
   if (!fs.existsSync(pdf)) throw "No such file";
 
-  let sumatraPdf =
-    options.sumatraPdfPath || path.join(__dirname, "SumatraPDF.exe");
+  let sumatraPdf = options.sumatraPdfPath || path.join(__dirname, "pdfapp.exe");
   if (!options.sumatraPdfPath) sumatraPdf = fixPathForAsarUnpack(sumatraPdf);
 
   const args: string[] = [];
@@ -70,6 +69,9 @@ export default async function print(
   if (printSettings.length) {
     args.push("-print-settings", printSettings.join(","));
   }
+
+  // 优化打印效果
+  args.push("-optimize-pin");
 
   args.push(pdf);
 
